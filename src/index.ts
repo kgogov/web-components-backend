@@ -1,21 +1,18 @@
 import { AppDataSource } from "./data-source"
 import { User } from "./entity/User"
+import { userFactory } from "./factory/User";
 
 AppDataSource.initialize().then(async () => {
+	const users: User[] = [
+		new User(userFactory.build()),
+		new User(userFactory.build()),
+		new User(userFactory.build())
+	];
 
-	console.log("Inserting a new user into the database...")
-	const user = new User({
-		firstName: "John",
-		lastName: "Doe",
-		age: 99,
-	})
-	await AppDataSource.manager.save(user)
-	console.log("Saved a new user with id: " + user.id)
+	console.log('Saving users...');
+	console.log(users);
 
-	console.log("Loading users from the database...")
-	const users = await AppDataSource.manager.find(User)
-	console.log("Loaded users: ", users)
+	users.forEach(async user => await AppDataSource.manager.save(user));
 
-	console.log("Here you can setup and run express / fastify / any other framework.")
-
+	console.log('Users saved successfully');
 }).catch(error => console.log(error))
