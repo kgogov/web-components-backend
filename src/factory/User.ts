@@ -1,10 +1,12 @@
-import * as Factory from "factory.ts";
+import { Factory } from 'fishery';
 import { faker } from '@faker-js/faker';
 import { User } from "../entity/User";
 import { Currency } from "../enums/Currency.enum";
 import { Options } from "../enums/Options.enum";
+import { ObjectId } from "mongodb";
 
-export const userFactory = Factory.Sync.makeFactory<Partial<User>>({
+export const userFactory = Factory.define<User>(() => new User({
+	id: new ObjectId(),
 	firstName: faker.person.firstName(),
 	middleName: faker.person.middleName(),
 	lastName: faker.person.lastName(),
@@ -29,4 +31,4 @@ export const userFactory = Factory.Sync.makeFactory<Partial<User>>({
 	}),
 	working_hours: [8, 17],
 	rating: faker.number.float({ min: 1, max: 10, precision: 0.01 })
-});
+}));

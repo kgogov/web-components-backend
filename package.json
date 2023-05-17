@@ -2,7 +2,7 @@
 	"dependencies": {
 		"@faker-js/faker": "^8.0.0",
 		"dotenv": "^16.0.3",
-		"factory.ts": "^1.4.1",
+		"fishery": "^2.2.2",
 		"mongodb": "^5.2.0",
 		"reflect-metadata": "^0.1.13",
 		"typeorm": "0.3.16"
@@ -14,7 +14,7 @@
 		"typescript": "4.5.2"
 	},
 	"scripts": {
-		"start": "ts-node src/index.ts",
+		"db:reset": "ts-node src/seed.ts",
 		"typeorm": "typeorm-ts-node-commonjs"
 	}
 }
