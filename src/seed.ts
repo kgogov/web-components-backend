@@ -1,5 +1,5 @@
-import { AppDataSource } from "./data-source"
-import { User } from "./entity/User"
+import { AppDataSource } from "./data-source";
+import { User } from "./entity/User";
 import { userFactory } from "./factory/User";
 
 AppDataSource.initialize().then(async () => {
