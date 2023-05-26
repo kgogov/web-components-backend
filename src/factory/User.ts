@@ -3,10 +3,8 @@ import { faker } from '@faker-js/faker';
 import { User } from "../entity/User";
 import { Currency } from "../enums/Currency.enum";
 import { Options } from "../enums/Options.enum";
-import { ObjectId } from "mongodb";
 
 export const userFactory = Factory.define<User>(() => new User({
-	id: new ObjectId(),
 	firstName: faker.person.firstName(),
 	middleName: faker.person.middleName(),
 	lastName: faker.person.lastName(),

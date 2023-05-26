@@ -2,8 +2,6 @@ import { Entity, ObjectIdColumn, ObjectId, Column } from "typeorm";
 import { Currency } from "../enums/Currency.enum";
 import { Options } from "../enums/Options.enum";
 
-// TODO: Make new entity for Form and Field
-
 @Entity()
 export class User {
 
