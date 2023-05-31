@@ -1,4 +1,4 @@
-import { Entity, Column, ObjectIdColumn, ObjectId } from "typeorm";
+import { Entity, Column, ObjectIdColumn } from "typeorm";
 import { FieldTypeEnum } from "../enums/FieldType.enum";
 
 @Entity()
