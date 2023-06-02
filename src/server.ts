@@ -5,6 +5,9 @@ import { DataServices } from './services';
 import { Form } from './entity/Form';
 import { User } from './entity/User';
 import { UserDto } from './dto/users.dto';
+import * as bodyParser from 'body-parser';
+
+const jsonParser = bodyParser.json();
 
 dotenv.config();
 
@@ -61,6 +64,40 @@ app.get('/forms/:name', async (req: Request, res: Response) => {
 		res.send(`Form not found!`);
 	} else {
 		res.send(form);
+	}
+});
+
+app.post('/users/create', jsonParser, async (req: Request, res: Response) => {
+	if (!Object.keys(req.body).length) {
+		res.status(400);
+		res.send(`User not created!`);
+		return;
+	}
+
+	const createdUser: User | null = await services.createUser(req.body);
+
+	if (!createdUser) {
+		res.status(500);
+		res.send(`User not created!`);
+	} else {
+		res.send(createdUser);
+	}
+});
+
+app.post('/users/:id', jsonParser, async (req: Request, res: Response) => {
+	if (!Object.keys(req.body).length) {
+		res.status(400);
+		res.send(`User not update!`);
+		return;
+	}
+
+	const updatedUser: User | null = await services.updateUser(req.params.id, req.body);
+
+	if (!updatedUser) {
+		res.status(500);
+		res.send(`User not update!`);
+	} else {
+		res.send(updatedUser);
 	}
 });
 

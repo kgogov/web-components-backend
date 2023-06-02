@@ -29,4 +29,24 @@ export class DataServices {
 	public async getFormByName(name: string): Promise<Form | undefined> {
 		return await this.databaseConnection?.getMongoRepository(Form).findOneBy({ name });
 	}
+
+	public async createUser(user: Partial<User>): Promise<User | null> {
+		try {
+			return await this.databaseConnection?.getMongoRepository(User).save(user);
+		} catch (error) {
+			console.log(error);
+			return null;
+		}
+	}
+
+	public async updateUser(id: string, user: Partial<User>): Promise<User | null> {
+		try {
+			await this.databaseConnection?.getMongoRepository(User).updateOne({ _id: new ObjectId(id) }, { $set: user });
+			return await this.getUserById(id);
+		} catch (error) {
+			console.log(error);
+			return null;
+		}
+	}
+
 }

@@ -54,11 +54,11 @@ export const fieldsData: Partial<Field>[] = [
 		},
 		dependantField: {
 			name: 'date',
-			action: `(formField: Field, event: any) => {
+			action: `
 				const date = new Date(event.detail.changedFieldValue.toString());
 				const age = new Date().getFullYear() - date.getFullYear();
 				formField.value = age;
-			}`
+			`
 		}
 	}, {
 		name: 'additionalInfoTitle',
@@ -118,9 +118,7 @@ export const fieldsData: Partial<Field>[] = [
 		value: ['bg'],
 		dependantField: {
 			name: 'otherLanguages',
-			action: `(formField: Field, event: any) => {
-				formField.isHidden = event.detail.changedFieldValue === 'no';
-			})`
+			action: `formField.isHidden = event.detail.changedFieldValue === 'no';`
 		},
 		options: [{
 			id: 'bg',
