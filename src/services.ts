@@ -4,6 +4,7 @@ import { User } from "./entity/User";
 import { ObjectId } from "mongodb";
 import { Form } from "./entity/Form";
 import { UserDto } from "./dto/users.dto";
+import { Field } from "./entity/Field";
 
 export class DataServices {
 	constructor() {
@@ -28,6 +29,10 @@ export class DataServices {
 
 	public async getFormByName(name: string): Promise<Form | undefined> {
 		return await this.databaseConnection?.getMongoRepository(Form).findOneBy({ name });
+	}
+
+	public async getFormFieldsByName(name: string[]): Promise<Field[]> {
+		return await this.databaseConnection?.getMongoRepository(Field).find({ name: { $in: name } });
 	}
 
 	public async createUser(user: Partial<User>): Promise<User | null> {

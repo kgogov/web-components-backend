@@ -1,5 +1,6 @@
 import { Entity, Column, ObjectIdColumn } from "typeorm";
 import { FieldTypeEnum } from "../enums/FieldType.enum";
+import { ObjectId } from "mongodb";
 
 @Entity()
 export class Field {
@@ -9,6 +10,9 @@ export class Field {
 	}
 
 	@ObjectIdColumn()
+	id: ObjectId;
+
+	@Column()
 	name: string;
 
 	@Column()

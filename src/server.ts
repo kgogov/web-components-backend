@@ -6,6 +6,8 @@ import { Form } from './entity/Form';
 import { User } from './entity/User';
 import { UserDto } from './dto/users.dto';
 import * as bodyParser from 'body-parser';
+import * as cors from 'cors';
+import { Field } from './entity/Field';
 
 const jsonParser = bodyParser.json();
 
@@ -15,6 +17,8 @@ const app: Express = express();
 const port: string = process.env.PORT;
 
 const services = new DataServices();
+
+app.use(cors());
 
 /* *ENDPOINTS* */
 
@@ -52,9 +56,11 @@ app.get('/forms', async (req: Request, res: Response) => {
 
 app.get('/forms/:name', async (req: Request, res: Response) => {
 	let form: Form;
+	let fields: Field[];
 
 	try {
 		form = await services.getFormByName(req.params.name);
+		fields = await services.getFormFieldsByName(form.fields);
 	} catch (er) {
 		console.log(er);
 	}
@@ -63,7 +69,7 @@ app.get('/forms/:name', async (req: Request, res: Response) => {
 		res.status(204);
 		res.send(`Form not found!`);
 	} else {
-		res.send(form);
+		res.send(fields);
 	}
 });
 
