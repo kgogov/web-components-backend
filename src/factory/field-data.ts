@@ -8,7 +8,6 @@ export const fieldsData: Partial<Field>[] = [
 		type: FieldTypeEnum.Title,
 	}, {
 		name: 'firstName',
-		value: 'Ivan',
 		labelContent: 'First name',
 		type: FieldTypeEnum.Text,
 		placeholder: 'Enter your first name',
@@ -23,14 +22,12 @@ export const fieldsData: Partial<Field>[] = [
 		labelContent: 'Last name',
 		isRequired: true,
 		type: FieldTypeEnum.Text,
-		value: 'Ivanovich',
 		placeholder: 'Enter your last name',
 	}, {
 		name: 'email',
 		labelContent: 'Email',
 		type: FieldTypeEnum.Email,
 		isRequired: true,
-		value: 'asd@abv.bg',
 		placeholder: 'Enter your email',
 	}, {
 		name: 'date',
@@ -70,7 +67,6 @@ export const fieldsData: Partial<Field>[] = [
 		type: FieldTypeEnum.Select,
 		isRequired: true,
 		placeholder: 'Where are you from?',
-		value: 'UK',
 		options: [{
 			id: 'BG',
 			value: 'Bulgaria'
@@ -101,7 +97,6 @@ export const fieldsData: Partial<Field>[] = [
 		labelContent: 'Do you speak any other languages?',
 		type: FieldTypeEnum.Radio,
 		isRequired: true,
-		value: 'no',
 		options: [{
 			id: 'yes',
 			value: 'yes'
@@ -115,7 +110,6 @@ export const fieldsData: Partial<Field>[] = [
 		type: FieldTypeEnum.Checkbox,
 		isRequired: true,
 		isHidden: true,
-		value: ['bg'],
 		dependantField: {
 			name: 'otherLanguages',
 			action: `formField.isHidden = event.detail.changedFieldValue === 'no';`
@@ -149,7 +143,6 @@ export const fieldsData: Partial<Field>[] = [
 		helperText: 'Note: You can select multiple places.',
 		isRequired: true,
 		placeholder: 'Select places',
-		value: ['en', 'fr'],
 		options: [{
 			id: 'bg',
 			value: 'Bulgarian'
@@ -177,7 +170,6 @@ export const fieldsData: Partial<Field>[] = [
 		labelContent: 'What is your window for working hours?',
 		type: FieldTypeEnum.WorkingHours,
 		isRequired: true,
-		value: [9, 18],
 		validation: {
 			min: 6,
 			max: 20,
@@ -190,7 +182,6 @@ export const fieldsData: Partial<Field>[] = [
 		name: 'newsletter',
 		labelContent: 'Subscribe to our newsletter?',
 		type: FieldTypeEnum.Switch,
-		value: 'on',
 		options: [{
 			id: 'on',
 			value: 'Yes'
@@ -202,7 +193,6 @@ export const fieldsData: Partial<Field>[] = [
 		name: 'rating',
 		labelContent: 'Want to rate your experience?',
 		type: FieldTypeEnum.Rating,
-		value: 8.7,
 		validation: {
 			max: 10,
 		}

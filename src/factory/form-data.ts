@@ -8,7 +8,7 @@ export const FormData: Partial<Form>[] = [
 	},
 	{
 		name: 'Form 2',
-		fields: ['firstName', 'lastName']
+		fields: ['firstName', 'lastName', 'date']
 	},
 	{
 		name: 'Form 3',
