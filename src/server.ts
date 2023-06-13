@@ -90,7 +90,7 @@ app.post('/users/create', jsonParser, async (req: Request, res: Response) => {
 	}
 });
 
-app.post('/users/:id', jsonParser, async (req: Request, res: Response) => {
+app.put('/users/:id', jsonParser, async (req: Request, res: Response) => {
 	if (!Object.keys(req.body).length) {
 		res.status(400);
 		res.send(`User not update!`);

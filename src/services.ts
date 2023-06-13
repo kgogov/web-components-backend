@@ -33,6 +33,8 @@ export class DataServices {
 
 	public async getFormFieldsByName(name: string[]): Promise<Field[]> {
 		return await this.databaseConnection?.getMongoRepository(Field).find({ name: { $in: name } });
+		// const fields: Field[] = await this.databaseConnection?.getMongoRepository(Field).find({ name: { $in: names } });
+		// return names.map(name => fields.find(fl => fl.name === name));
 	}
 
 	public async createUser(user: Partial<User>): Promise<User | null> {
